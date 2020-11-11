@@ -6,17 +6,17 @@ class Farm:
         self.fan_power_watts = fan_power_watts
 
     @staticmethod
-    def heapify(array, size_of_array, i):
-        largest_element = i
-        left_child = 2 * i + 1
-        right_child = 2 * i + 2
-        if left_child < size_of_array and array[i].number_of_animals < array[left_child].number_of_animals:
-            largest_element = left_child
-        if right_child < size_of_array and array[largest_element].number_of_animals < array[right_child].number_of_animals:
-            largest_element = right_child
-        if largest_element != i:
-            array[i], array[largest_element] = array[largest_element], array[i]
-            Farm.heapify(array, size_of_array, largest_element)
+    def heapify(array, size_of_array, index_of_parent):
+        index_of_largest_element = index_of_parent
+        index_of_left_child = 2 * index_of_parent + 1
+        index_of_right_child = 2 * index_of_parent + 2
+        if index_of_left_child < size_of_array and array[index_of_parent].number_of_animals < array[index_of_left_child].number_of_animals:
+            index_of_largest_element = index_of_left_child
+        if index_of_right_child < size_of_array and array[index_of_largest_element].number_of_animals < array[index_of_right_child].number_of_animals:
+            index_of_largest_element = index_of_right_child
+        if index_of_largest_element != index_of_parent:
+            array[index_of_parent], array[index_of_largest_element] = array[index_of_largest_element], array[index_of_parent]
+            Farm.heapify(array, size_of_array, index_of_largest_element)
 
     @staticmethod
     def sort_farm_number_of_animals_by_ascending(array):
@@ -28,8 +28,8 @@ class Farm:
 
     @staticmethod
     def intermediate_result_farm_number_of_animals(array):
-        for i in array:
-            print(i.number_of_animals)
+        for element in array:
+            print(element.number_of_animals)
         print("***************")
 
     @staticmethod
@@ -45,8 +45,8 @@ class Farm:
 
     @staticmethod
     def intermediate_result_farm_fan_power_watts(array):
-        for i in array:
-            print(i.fan_power_watts)
+        for element in array:
+            print(element.fan_power_watts)
         print("***************")
 
 
